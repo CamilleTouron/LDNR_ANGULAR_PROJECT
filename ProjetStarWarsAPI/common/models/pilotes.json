@@ -1,0 +1,31 @@
+{
+  "name": "PILOTES",
+  "plural": "Pilotes",
+  "base": "PersistedModel",
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "PiloteID":{
+      "type": "string",
+      "id": true,
+      "generated":true
+    },
+    "Nom": {
+      "type": "string"
+    },
+    "Prenom": {
+      "type": "string"
+    },
+    "Race": {
+      "type": "string"
+    },
+    "Age": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
