@@ -1,0 +1,106 @@
+<h2 id="titre">Gestion des chasseurs</h2>
+
+<div id="all">
+    <!--Bloc d'ajout-->
+    <div id='bloc'>
+        <div id='ajout'>
+            <h4>Ajout d'un chasseur</h4>
+            <form #f="ngForm" (submit)="ajouterChasseur(f,fffff)" id="formulaire-ajout">
+                <!--Champ Modele-->
+                <div class="inputs">
+                    <label for="modele">Modele</label>
+                    <select type="text" name="Modele" required ngModel #champModele="ngModel">
+                        <option value="Y-Wing">Y-Wing</option>
+                        <option value="X-Wing">X-Wing</option>
+                    </select>
+                </div>
+                <div class="inputs">
+                    <label for="etat">Etat</label>
+                    <select type="text" name="Etat" required ngModel #champEtar="ngModel">
+                        <option value="operationnel">opérationnel</option>
+                        <option value="en maintenance">en maintenance</option>
+                    </select>
+                </div>
+                <div class="inputs">
+                    <p>PiloteID</p>
+                    <form #fffff="ngForm">
+
+                        <input ngModel name="num" type="text" required placeholder="123" pattern='[0-1000000]' required
+                            style="width:40px;">
+                    </form>
+                </div>
+                <!--Bouton ajout-->
+                <div class="inputs">
+                    <button type="submit" id="formulaire-ajout" [disabled]="f.invalid">Ajouter</button>
+                </div>
+            </form>
+
+        </div>
+
+        <!--Bloc affichage-->
+        <div id="affichage">
+            <!--Rechercher par id-->
+            <div>
+                <h4>Rechercher chasseur par son id :</h4>
+                <form #ff="ngForm">
+                    <div id="rechercher">
+                        <input type="text" ngModel name="num" pattern='[0-1000000]' placeholder="123" required>
+                        <input id='test' type="submit" (click)='rechercherChasseur(ff)' value="Rechercher">
+                    </div>
+
+                    <div id="recherche" *ngIf="chasseurrechercher.ChasseurID>0">
+                        <div id='info'>
+                            <p>ID : {{ chasseurrechercher.ChasseurID }}</p>
+                            <p>Modele : {{ chasseurrechercher.Modele }}</p>
+                            <p>Etat : {{ chasseurrechercher.Etat }}</p>
+                            <p>PiloteID : {{ chasseurrechercher.PiloteID }}</p>
+                        </div>
+                        <div id='gestion'>
+                            <form id='fin' *ngIf="chasseurrechercher.Etat!=='detruit'" #fff="ngForm">
+                                <input id='piloteid' ngModel name="num" type="text" required placeholder="123" pattern='[0-1000000]'
+                                    required >
+                                <input type="submit" value="Affecter" (click)='affecter(fff,chasseurrechercher)'>
+                            </form>
+                            <input type="submit"
+                                *ngIf="chasseurrechercher.PiloteID>0 && chasseurrechercher.Etat!=='detruit'"
+                                (click)='dissocier(chasseurrechercher)' value="Dissocier">
+                            <input type="submit" *ngIf="chasseurrechercher.Etat!=='detruit'"
+                                (click)="modifierEtatChasseur(chasseurrechercher)" value=" ModifierEtat">
+                            <input type="submit" *ngIf="chasseurrechercher.Etat!=='detruit'"
+                                (click)="detruire(chasseurrechercher)" value="Détruire">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Liste des chasseurs-->
+    <div id="liste">
+        <h4>Liste des chasseurs</h4>
+        <div>
+            <label for="op">{{ textechasseur }}</label>
+            <input type="submit" id="op" name="op" (click)="changeTableau()" value="ici">
+        </div>
+        <div>
+            {{ textenbchasseur }}
+        </div>
+        <div id='scroll'>
+            <ul>
+                <li>
+                    <p>ID</p>
+                    <p>Modele</p>
+                    <p>Etat</p>
+                    <p>PiloteID</p>
+                </li>
+                <li *ngFor="let chasseur of chasseurs">
+                    <p>{{ chasseur.ChasseurID }}</p>
+                    <p>{{ chasseur.Modele }}</p>
+                    <p>{{ chasseur.Etat }}</p>
+                    <p>{{ chasseur.PiloteID }}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,16 @@
+div{
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+}
+button{
+    margin: 2em;
+    margin-top: 5%;
+    padding: 5em;
+    border: 2px  solid rgba(228, 6, 6);
+    background-color: rgb(1, 1, 1, .8);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

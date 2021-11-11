@@ -1,0 +1,113 @@
+<h2 id="titre">Gestion des pilotes</h2>
+<div id="all">
+  <!--Bloc inscription-->
+  <div id='inscription'>
+    <h4>Inscription</h4>
+    <form #f="ngForm" (submit)="inscrirePilote(f)" id="formulaire-inscription">
+      <!--Champ Nom-->
+      <div class="inputs">
+        <label for="nom">Nom&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" name="Nom" required ngModel placeholder="Dark" minlength="3" maxlength="50"
+          #champNom="ngModel">
+        <!--<div class="alert" *ngIf="champNom.invalid">Le nom est invalide.</div>-->
+        <div class="alert" *ngIf="champNom.errors?.minlength">Le nom doit comporter au moins 3 caractères.</div>
+      </div>
+      <!--Champ Prenom-->
+      <div class="inputs">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="Prenom" ngModel placeholder="Vador" required minlength="3" maxlength="50">
+      </div>
+      <!--Champ Age-->
+      <div class="inputs">
+        <label for="age">Age &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="age" name="Age" required ngModel placeholder="10 - 800 "
+          pattern="([1-9][0-9]|[1-7][0-9][0-9]|800)$" #champAge="ngModel">
+        <div class="alert" *ngIf="champAge.errors?.pattern">Le rebelle doit avoir entre 10 et 800ans pour pouvoir
+          devenir
+          pilote.
+        </div>
+      </div>
+      <!--Champ Race-->
+      <div class="inputs">
+        <label for="Race">Race&nbsp;&nbsp;&nbsp;</label>
+        <select id='race' name="Race" required ngModel #champage="ngModel">
+          <option value="Chalactéen">Chalactéen</option>
+          <option value="Chiss">Chiss</option>
+          <option value="Humain">Humain</option>
+          <option value="Ithorien">Ithorien</option>
+          <option value="Mirialan">Mirialan</option>
+          <option value="Kel'Dor">Kel'Dor</option>
+          <option value="Kiffar">Kiffar</option>
+          <option value="Miraluka">Miraluka</option>
+          <option value="Mirialan">Mirialan</option>
+          <option value="Nagai">Nagai</option>
+          <option value="Neimoidien">Neimoidien</option>
+          <option value="Nikto">Nikto</option>
+          <option value="Noghri">Noghri</option>
+          <option value="Ongree">Ongree</option>
+          <option value="Pau'an">Pau'an</option>
+          <option value="Quermien">Quermien</option>
+          <option value="Rakata">Rakata</option>
+          <option value="Rodien">Rodien</option>
+          <option value="Thisspasien">Thisspasien</option>
+          <option value="Togruta">Togruta</option>
+          <option value="Wookie">Wookie</option>
+          <option value="Wronian">Wronian</option>
+          <option value="Zabrak">Zabrak</option>
+        </select>
+      </div>
+      <!--Bouton Inscrire-->
+      <div class="inputs">
+        <button type="submit" id="formulaire-inscription" [disabled]="f.invalid">Inscrire</button>
+      </div>
+    </form>
+  </div>
+  <!--Bloc affichage-->
+  <div id="affichage">
+    <!--Rechercher par id -->
+    <div>
+      <h4>Rechercher pilote par son id</h4>
+      <form #ff="ngForm">
+        <div >
+          <input type="text" id='test' ngModel name="num" pattern='[0-1000000]' placeholder="123" required id="test">
+          <br>
+          <br>
+          <button type="submit" id='rechercher' (click)='rechercherPilote(ff)' >Rechercher</button>
+        </div>
+        <br>
+        <div id='recherche' *ngIf="piloterechercher.PiloteID>0">
+          <p>Nom : {{ piloterechercher.Nom }}</p>
+          <p>Prénom : {{ piloterechercher.Prenom }}</p>
+          <p>Race : {{ piloterechercher.Race }}</p>
+          <p>Age : {{ piloterechercher.Age }}</p>
+        </div>
+        <div *ngIf="piloterechercher.PiloteID<0">Le pilote recherché n'existe pas.</div>
+      </form>
+    </div>
+  </div>
+  <!--Bloc liste-->
+  <div id="liste">
+    <!--Liste des pilotes-->
+    <div>
+      <h4>Liste des pilotes</h4>
+      <div id="scroll">
+        <ul>
+          <li id="tab">
+            <p>ID</p>
+            <p>Nom</p>
+            <p>Prenom</p>
+            <p>Race</p>
+            <p>Age</p>
+          </li>
+          <li *ngFor="let pilote of pilotes">
+            <p id="id">{{ pilote.PiloteID }}</p>
+            <p>{{ pilote.Nom }}</p>
+            <p>{{ pilote.Prenom }}</p>
+            <p>{{ pilote.Race }}</p>
+            <p>{{ pilote.Age }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
