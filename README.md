@@ -14,7 +14,7 @@ Maria DB :  10.5.9
 
 ## To import : 
 
-               git pull https://github.com/CamilleTouron/RessourcesManagingWebAPP.git
+               git clone https://github.com/CamilleTouron/RessourcesManagingWebAPP.git
 
 
 ## To excute localy: 
