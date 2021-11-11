@@ -17,7 +17,7 @@ Maria DB :  10.5.9
                git clone https://github.com/CamilleTouron/RessourcesManagingWebAPP.git
 
 
-## To excute localy: 
+## To execute localy: 
 ### 1 - Open a terminal in the repertory Dump :
                 
                 mysql -u root -p
