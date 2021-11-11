@@ -47,7 +47,7 @@ Maria DB :  10.5.9
 It will apear a sentence like : " Angular Live Development Server is listening on localhost:4200, open your browser on http ://localhost:4200/ ** " click on the " http ://localhost:4200/ " .
 
 ### 4 - Click on the header of the page and there it is you can use the Web APP localy. 
-
+#### If it does not work please check the propreties on the file ProjetStarWarsAPI/server/config.json to match yours.
 ## Project's details :      
   Group of three persons.     
   In three days.  
